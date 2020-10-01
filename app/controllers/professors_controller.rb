@@ -4,23 +4,12 @@ class ProfessorsController < ApplicationController
     @professors = Professor.all
   end
 
-  def new
-    @professor = Professor.new
-  end
-
   def create
-    @professor = Professor.create(professor_params)
-    redirect_to professors_path
+    @professor = Professor.create (params)
   end 
 
   def show 
-    @professor = Professor.find(params[:id])
+    @professor = Professor.new (params)
   end 
-
-  private
-
-  def professor_params
-    params.require(:professor).permit(:name)
-  end
 
 end
